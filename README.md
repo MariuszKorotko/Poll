@@ -1,0 +1,2 @@
+# Poll
+Simple voting application
