@@ -72,6 +72,7 @@ This basic poll application will consist of two parts:
             return HttpResponseRedirect(reverse('polls:results',
                                                 args=(question.id,)))
     ```
+
 ### Tests:
 1 Question model:
   ```
