@@ -71,8 +71,8 @@ This basic poll application will consist of two parts:
         return HttpResponseRedirect(reverse('polls:results',
                                             args=(question.id,)))
   ```
-  ### Test
-  - Question model:
+  ### Tests
+  1 Question model:
   ```
       def test_was_publised_recently_with_future_question(self):
         """
