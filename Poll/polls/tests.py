@@ -2,10 +2,11 @@ import datetime
 from django.utils import timezone
 from django.test import TestCase
 from .models import Question
-from django.urls
+from django.urls import reverse
 
 def create_question(question_text, days):
-    """Create a question with given 'question_text' and published the given
+    """
+    Create a question with given 'question_text' and published the given
     number of 'days' offset to now (negative for questions published in the
     past, positive for questions that have yet to be published).
     """
@@ -13,6 +14,15 @@ def create_question(question_text, days):
     return Question.objects.create(question_text=question_text, pub_date=time)
 
 class QuestionTest(TestCase):
+    def no_question(self):
+        """
+        If no question exist, an appropriate is displayed.
+        """
+        response = self.client.get(reverse('polls:index'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "No polls ara available.")
+        self.assertQuerysetEqual(response.context['latest_question_list'],[])
+
     def test_was_publised_recently_with_future_question(self):
         """
         was_published_recently() returns False for questions whose pub_date
