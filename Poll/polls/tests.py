@@ -6,7 +6,6 @@ from django.utils import timezone
 
 from .models import Question
 
-
 def create_question(question_text, days):
     """
     Create a question with given 'question_text' and published the given
@@ -15,7 +14,6 @@ def create_question(question_text, days):
     """
     time = timezone.now() + datetime.timedelta(days=days)
     return Question.objects.create(question_text=question_text, pub_date=time)
-
 
 class QuestionTest(TestCase):
     def no_question(self):
