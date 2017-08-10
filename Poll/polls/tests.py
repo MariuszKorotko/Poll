@@ -35,7 +35,7 @@ class QuestionTest(TestCase):
         response = self.client.get(reverse('polls:index'))
         self.assertQuerysetEqual(
             response.context['latest_question_list'],
-            ['<Question: Past question.>']
+                            ['<Question: Past question.>']
         )
 
     def test_future_question(self):
@@ -57,8 +57,8 @@ class QuestionTest(TestCase):
         create_question(question_text="Future question.", days=30)
         response = self.client.get(reverse('polls:index'))
         self.assertQuerysetEqual(
-            response.context['latest_question_list'], ['<Question: Past '
-                                                       'question.>']
+            response.context['latest_question_list'],
+                            ['<Question: Past question.>']
         )
 
     def test_was_publised_recently_with_future_question(self):
